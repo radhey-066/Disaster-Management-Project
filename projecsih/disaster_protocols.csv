@@ -1,0 +1,6 @@
+protocol_id,disaster_type,activation_level,response_time,key_actions,resources_needed
+RP001,Earthquake,Level 3,15 minutes,"Search & Rescue, Structural Assessment, Medical Triage","Heavy Rescue Equipment, Medical Teams, Structural Engineers"
+RP002,Fire,Level 2,5 minutes,"Evacuation, Fire Suppression, Smoke Inhalation Treatment","Fire Trucks, Ambulances, Burn Treatment Supplies"
+RP003,Chemical Spill,Level 4,30 minutes,"Hazmat Response, Decontamination, Air Quality Monitoring","Hazmat Teams, Decon Equipment, Respiratory Protection"
+RP004,Mass Shooting,Level 3,10 minutes,"Lockdown, Trauma Care, Law Enforcement Coordination","Security Personnel, Trauma Surgeons, Blood Supply"
+RP005,Pandemic,Level 1,2 hours,"Isolation Protocols, Contact Tracing, Medical Supplies","PPE, Testing Kits, Isolation Facilities"

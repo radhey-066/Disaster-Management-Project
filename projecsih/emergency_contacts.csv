@@ -1,0 +1,9 @@
+contact_id,role,name,primary_phone,secondary_phone,department,availability_status
+EC001,Emergency Coordinator,Dr. Sarah Johnson,+1-555-0101,+1-555-0201,Emergency Coordination,On Call
+EC002,Medical Director,Dr. Michael Chen,+1-555-0102,+1-555-0202,Administration,Available
+EC003,Triage Officer,Nurse Emily Davis,+1-555-0103,+1-555-0203,Emergency Department,On Duty
+EC004,Security Chief,Officer James Wilson,+1-555-0104,+1-555-0204,Security,Available
+EC005,Communications Officer,Ms. Rachel Green,+1-555-0105,+1-555-0205,Communications,Available
+EC006,Logistics Manager,Mr. David Brown,+1-555-0106,+1-555-0206,Operations,On Call
+EC007,Public Information Officer,Ms. Lisa Anderson,+1-555-0107,+1-555-0207,Public Affairs,Available
+EC008,Incident Commander,Dr. Robert Taylor,+1-555-0108,+1-555-0208,Command Center,Available

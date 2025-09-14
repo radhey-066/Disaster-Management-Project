@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🚨 Disaster Management System</h2>
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="dashboard">Dashboard</button>
+                <button class="nav-tab" data-tab="casualties">Casualties</button>
+                <button class="nav-tab" data-tab="resources">Resources</button>
+                <button class="nav-tab" data-tab="coordination">Coordination</button>
+                <button class="nav-tab" data-tab="communication">Communication</button>
+                <button class="nav-tab" data-tab="reports">Reports</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+            <div class="dashboard-header">
+                <h1>Emergency Operations Dashboard</h1>
+                <div class="alert-status">
+                    <span class="status status--error">🚨 ACTIVE INCIDENT</span>
+                    <span class="incident-time">Incident Duration: <span id="incident-timer">02:15:30</span></span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card critical">
+                    <div class="stat-icon">🔴</div>
+                    <div class="stat-content">
+                        <h3 id="critical-count">2</h3>
+                        <p>Critical Cases</p>
+                    </div>
+                </div>
+                <div class="stat-card moderate">
+                    <div class="stat-icon">🟡</div>
+                    <div class="stat-content">
+                        <h3 id="moderate-count">2</h3>
+                        <p>Moderate Cases</p>
+                    </div>
+                </div>
+                <div class="stat-card minor">
+                    <div class="stat-icon">🟢</div>
+                    <div class="stat-content">
+                        <h3 id="minor-count">1</h3>
+                        <p>Minor Cases</p>
+                    </div>
+                </div>
+                <div class="stat-card deceased">
+                    <div class="stat-icon">⚫</div>
+                    <div class="stat-content">
+                        <h3 id="deceased-count">1</h3>
+                        <p>Deceased</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-section">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Resource Availability</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="resource-summary">
+                                <div class="resource-item">
+                                    <span class="resource-name">ICU Beds</span>
+                                    <span class="resource-value">45/50</span>
+                                    <div class="resource-bar">
+                                        <div class="resource-fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="resource-item">
+                                    <span class="resource-name">Ambulances</span>
+                                    <span class="resource-value">12/15</span>
+                                    <div class="resource-bar">
+                                        <div class="resource-fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="resource-item">
+                                    <span class="resource-name">Blood O-</span>
+                                    <span class="resource-value warning">150/300</span>
+                                    <div class="resource-bar">
+                                        <div class="resource-fill warning" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="quick-actions">
+                                <button class="btn btn--primary btn--full-width" id="add-casualty-btn">
+                                    ➕ Add New Casualty
+                                </button>
+                                <button class="btn btn--secondary btn--full-width">
+                                    📞 Emergency Alert
+                                </button>
+                                <button class="btn btn--outline btn--full-width">
+                                    📊 Generate Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-charts">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Triage Distribution</h3>
+                    </div>
+                    <div class="card__body">
+                        <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/aa82c6d6b81290f0c684df3702020a74/3cff42d3-3e00-410d-9705-fb8cc995f75b/2c5673b4.png" 
+                             alt="Triage Distribution Chart" class="chart-image">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Resource Utilization</h3>
+                    </div>
+                    <div class="card__body">
+                        <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/aa82c6d6b81290f0c684df3702020a74/3485d70f-48af-44eb-ab20-d9a7fee6b12c/2c5673b4.png" 
+                             alt="Resource Utilization Chart" class="chart-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Casualties Tab -->
+        <div id="casualties" class="tab-content">
+            <div class="section-header">
+                <h1>Casualty Management</h1>
+                <button class="btn btn--primary" id="add-casualty-modal-btn">➕ Add New Casualty</button>
+            </div>
+
+            <div class="filters-section">
+                <div class="filters">
+                    <select class="form-control" id="triage-filter">
+                        <option value="">All Triage Levels</option>
+                        <option value="Red">🔴 Red (Critical)</option>
+                        <option value="Yellow">🟡 Yellow (Moderate)</option>
+                        <option value="Green">🟢 Green (Minor)</option>
+                        <option value="Black">⚫ Black (Deceased)</option>
+                    </select>
+                    <select class="form-control" id="status-filter">
+                        <option value="">All Statuses</option>
+                        <option value="Waiting">Waiting</option>
+                        <option value="In Surgery">In Surgery</option>
+                        <option value="Critical Care">Critical Care</option>
+                        <option value="Observation">Observation</option>
+                        <option value="Discharged">Discharged</option>
+                        <option value="Deceased">Deceased</option>
+                    </select>
+                    <input type="text" class="form-control" id="search-casualties" placeholder="Search by name or ID...">
+                </div>
+            </div>
+
+            <div class="casualties-grid" id="casualties-grid">
+                <!-- Casualties will be dynamically populated -->
+            </div>
+        </div>
+
+        <!-- Resources Tab -->
+        <div id="resources" class="tab-content">
+            <div class="section-header">
+                <h1>Resource Management</h1>
+                <button class="btn btn--primary">🔄 Refresh Status</button>
+            </div>
+
+            <div class="resources-grid">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Hospital Capacity</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="resources-list" id="hospital-resources">
+                            <!-- Resources will be dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Equipment & Supplies</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="resources-list" id="equipment-resources">
+                            <!-- Equipment will be dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coordination Tab -->
+        <div id="coordination" class="tab-content">
+            <div class="section-header">
+                <h1>Emergency Response Coordination</h1>
+            </div>
+
+            <div class="coordination-grid">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Response Protocols</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="protocols-list" id="protocols-list">
+                            <!-- Protocols will be dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Incident Command</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="command-status">
+                            <div class="status-item">
+                                <strong>Incident Type:</strong> Mass Casualty Event
+                            </div>
+                            <div class="status-item">
+                                <strong>Command Officer:</strong> Dr. Sarah Johnson
+                            </div>
+                            <div class="status-item">
+                                <strong>Response Level:</strong> <span class="status status--error">Level 3</span>
+                            </div>
+                            <div class="status-item">
+                                <strong>Active Teams:</strong> 8
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Communication Tab -->
+        <div id="communication" class="tab-content">
+            <div class="section-header">
+                <h1>Emergency Communication</h1>
+                <button class="btn btn--primary">📢 Send Alert</button>
+            </div>
+
+            <div class="communication-grid">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Emergency Contacts</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="contacts-list" id="contacts-list">
+                            <!-- Contacts will be dynamically populated -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Communication Log</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="comm-log">
+                            <div class="log-entry">
+                                <span class="log-time">09:30</span>
+                                <span class="log-message">Alert sent to all medical staff - Mass casualty incident</span>
+                            </div>
+                            <div class="log-entry">
+                                <span class="log-time">09:25</span>
+                                <span class="log-message">Additional ambulances requested from neighboring hospitals</span>
+                            </div>
+                            <div class="log-entry">
+                                <span class="log-time">09:20</span>
+                                <span class="log-message">Emergency protocols activated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Tab -->
+        <div id="reports" class="tab-content">
+            <div class="section-header">
+                <h1>Reports & Analytics</h1>
+                <button class="btn btn--primary">📥 Export Data</button>
+            </div>
+
+            <div class="reports-grid">
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Live Statistics</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="stats-container">
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="casualty-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__header">
+                        <h3>Response Metrics</h3>
+                    </div>
+                    <div class="card__body">
+                        <div class="metrics-list">
+                            <div class="metric-item">
+                                <span class="metric-label">Average Response Time</span>
+                                <span class="metric-value">8 minutes</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Total Casualties Processed</span>
+                                <span class="metric-value">6</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Resources Deployed</span>
+                                <span class="metric-value">85%</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-label">Hospitals Involved</span>
+                                <span class="metric-value">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Casualty Modal -->
+    <div id="casualty-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Casualty</h3>
+                <button class="modal-close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="casualty-form">
+                    <div class="form-group">
+                        <label class="form-label">Patient Name</label>
+                        <input type="text" class="form-control" id="patient-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-control" id="patient-age" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <select class="form-control" id="patient-gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Triage Level</label>
+                        <select class="form-control" id="patient-triage" required>
+                            <option value="">Select Triage Level</option>
+                            <option value="Red">🔴 Red - Critical (Immediate)</option>
+                            <option value="Yellow">🟡 Yellow - Moderate (Delayed)</option>
+                            <option value="Green">🟢 Green - Minor (Walking Wounded)</option>
+                            <option value="Black">⚫ Black - Deceased/Expectant</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Injury Description</label>
+                        <textarea class="form-control" id="patient-injury" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Hospital Assignment</label>
+                        <select class="form-control" id="patient-hospital" required>
+                            <option value="">Select Hospital</option>
+                            <option value="Main Hospital">Main Hospital</option>
+                            <option value="Hospital B">Hospital B</option>
+                            <option value="Clinic A">Clinic A</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Next of Kin</label>
+                        <input type="text" class="form-control" id="patient-kin">
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn--secondary" id="cancel-casualty">Cancel</button>
+                        <button type="submit" class="btn btn--primary">Add Casualty</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Casualty Details Modal -->
+    <div id="casualty-details-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Casualty Details</h3>
+                <button class="modal-close" id="close-details-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="casualty-details-content">
+                <!-- Details will be populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

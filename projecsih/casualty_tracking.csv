@@ -1,0 +1,9 @@
+casualty_id,triage_color,age,gender,injury_type,arrival_time,treatment_status,assigned_hospital,next_of_kin
+C2024001,Red,35,Male,Severe head trauma,09:15,In Surgery,Main Hospital,Jane Doe
+C2024002,Yellow,42,Female,"Broken arm, stable",09:18,Waiting,Main Hospital,Mike Johnson
+C2024003,Green,28,Male,Minor cuts,09:20,Discharged,Clinic A,Sarah Smith
+C2024004,Red,51,Female,Internal bleeding,09:22,Critical Care,Main Hospital,Unknown
+C2024005,Yellow,33,Male,Fractured ribs,09:25,Observation,Hospital B,Lisa Brown
+C2024006,Black,67,Male,Cardiac arrest,09:12,Deceased,Morgue,Mary Wilson
+C2024007,Green,24,Female,Bruises,09:30,Discharged,Clinic A,Tom Davis
+C2024008,Yellow,45,Male,Chest injury,09:35,Stabilized,Hospital B,Carol Taylor

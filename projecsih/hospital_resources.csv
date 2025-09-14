@@ -1,0 +1,11 @@
+resource_id,resource_type,available_count,maximum_capacity,status,location
+HR001,ICU Beds,45,50,Available,Main Hospital
+HR002,Emergency Beds,120,150,Available,Emergency Wing
+HR003,Operating Rooms,18,20,Available,Surgical Wing
+HR004,Ventilators,35,40,Available,ICU
+HR005,Ambulances,12,15,Available,Parking Area
+HR006,Blood Units (O-),150,300,Low Stock,Blood Bank
+HR007,Blood Units (A+),200,350,Available,Blood Bank
+HR008,Medical Staff,85,100,Available,Various Departments
+HR009,Nursing Staff,180,200,Available,Various Departments
+HR010,Pharmacy Stock,95,100,Critical,Central Pharmacy
